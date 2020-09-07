@@ -1,0 +1,9 @@
+diff a/sanbo(Eunji)/Users/eungi/git/folder/target/m2e-wtp/web-resources/META-INF/maven/com.sw/web/pom.xml b/sanbo(Eunji)/Users/eungi/git/folder/target/m2e-wtp/web-resources/META-INF/maven/com.sw/web/pom.xml	(rejected hunks)
+@@ -75,7 +75,6 @@
+ 		<dependency>
+ 		    <groupId>com.fasterxml.jackson.core</groupId>
+ 		    <artifactId>jackson-databind</artifactId>
+-		    <version>2.9.8</version>
+ 		    <version>2.9.10.5</version>
+ 		</dependency>		
+ 		<!-- AOP -->
