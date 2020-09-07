@@ -1,23 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>     
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Çü»ó°ü¸®</title>
+<meta charset="UTF-8">
+<title>í˜•ìƒê´€ë¦¬</title>
 </head>
 <body>
       <header>
         <div class="top">
           <div class="home">
-            <p>»ê¾÷Á¦¾î½Ã½ºÅÛ</p>
-            <p>SW°ü¸® ÇÁ·Î±×·¥</p>
+            <p>ì‚°ì—…ì œì–´ì‹œìŠ¤í…œ</p>
+            <p>SWê´€ë¦¬ í”„ë¡œê·¸ëž¨</p>
           </div>
           <div class="menu">
-            	°øÅëÄÚµå °ü¸®
+            	ê³µí†µì½”ë“œ ê´€ë¦¬
           </div>
           <div class="login">
-            Admin´Ô
+            Adminë‹˜
           </div>
         </div>
       </header>
@@ -25,99 +27,65 @@
           <div class="right-container">
             <form class="center_form">
               <select class="select" name="">
-                <option value="»ó¼¼ÄÚµå">»ó¼¼ÄÚµå</option>
+                <option value="ìƒì„¸ì½”ë“œ">ìƒì„¸ì½”ë“œ</option>
               </select>
-              <input type="search" name="" value="" placeholder="°Ë»ö¾î ÀÔ·Â">
-              <button type="button" name="button">°Ë»ö</button>
+              <input type="search" name="" value="" placeholder="ê²€ìƒ‰ì–´ ìž…ë ¥">
+              <button type="button" name="button">ê²€ìƒ‰</button>
             </form>
             <div class="tab-group">
-              <a href="<c:url value="/common/code"/>"><button type="button" name="button">´ëÇ¥ÄÚµå</button></a>
-              <a href="<c:url value="/common/code/detail/1"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">»ó¼¼ÄÚµå</button></a>
-              <a><button type="button" name="button" style="float:right;" id="modal_open_btn">´ëÇ¥ÄÚµå µî·Ï</button></a>
+              <a href="<c:url value="/common/code"/>"><button type="button" name="button">ëŒ€í‘œì½”ë“œ</button></a>
+              <a href="<c:url value="/common/code/detail/1"/>"><button type="button" name="button" class="white" style="margin-left:-5px;">ìƒì„¸ì½”ë“œ</button></a>
+              <a><button type="button" name="button" style="float:right;" id="modal_open_btn">ëŒ€í‘œì½”ë“œ ë“±ë¡</button></a>
             </div>
             <hr>
             <table class="list">
               <tr>
                 <th style="width:15px;"></th>
                 <th style="width:30px;">id</th>
-                <th>´ëÇ¥ÄÚµå</th>
-                <th>´ëÇ¥ÄÚµå¸í</th>
-                <th>»ç¿ë¿©ºÎ</th>
+                <th>ëŒ€í‘œì½”ë“œ</th>
+                <th>ëŒ€í‘œì½”ë“œëª…</th>            
               </tr>
+              
+              <c:forEach var="code" items="${code }">
               <tr>
                 <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">1</td>
-                <td>A1</td>
-                <td>¼³ºñÀ¯Çü</td>
-                <td>O</td>
+                <td style="width:30px;"><c:out value = "${code.id }"/></td>
+                <td><c:out value = "${code.reprec }"/></td>
+                <td><c:out value = "${code.reprec_n }"/></td>
+                
               </tr>
-              <tr>
-                <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">2</td>
-                <td>A2</td>
-                <td>OSÀ¯Çü</td>
-                <td>O</td>
-              </tr>
-              <tr>
-                <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">3</td>
-                <td>A3</td>
-                <td>¹«°á¼º´ë»ó</td>
-                <td>O</td>
-              </tr>
-              <tr>
-                <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">4</td>
-                <td>A4</td>
-                <td>PLC/DCS S/W ¹«°á¼º ´ë»ó</td>
-                <td>O</td>
-              </tr>
-              <tr>
-                <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">5</td>
-                <td>A5</td>
-                <td>PLC/DCS Á¤º¸ ¹«°á¼º ´ë»ó</td>
-                <td>O</td>
-              </tr>
-              <tr>
-                <td style="width:15px;"><input type="checkbox" ></td>
-                <td style="width:30px;">6</td>
-                <td>A6</td>
-                <td>PC/Server S/W ¹«°á¼º ´ë»ó</td>
-                <td>O</td>
-              </tr>
+              </c:forEach>
+             
+             
             </table>
             <div class="button_group">
-                <button type="button">¼öÁ¤</button>
+                <button type="button">ìˆ˜ì •</button>
             </div>
+            
               <div id="modal">
+              	
                 <div class="modal_layer">
+                <form class="code-form" name=codeform action="<c:url value="/code/add"/>" method="post">
                 <div class="small_modal_content">
                   <div class="modal_title">
-                   	 ´ëÇ¥ÄÚµå µî·Ï
-                  </div>
-                    <form class="" action="index.html" method="post">
+                   	 ëŒ€í‘œì½”ë“œ ë“±ë¡
+                  </div>                   
                   <p>
-                    <span>ÄÚµå¹øÈ£</span>
+                    <span>ì½”ë“œë²ˆí˜¸</span>
                   </p>
-                    <input type="text" placeholder=""></input>
+                    <input type="text" name="reprec" placeholder=""></input>
                   <p>
-                    <span>ÄÚµå¸í</span>
+                    <span>ì½”ë“œëª…</span>
                   </p>
-                    <input type="text" placeholder=""></input>
-                  <p><span>»ç¿ë¿©ºÎ</span></p>
-                    <div class="modal_inner">
-                      <span>¿¹</span>
-                      <label><input type="checkbox"></label>
-                      <span>¾Æ´Ï¿ä</span>
-                      <label><input type="checkbox"></label>
-                    </div>
-                  </form>
+                    <input type="text" name="reprec_n" placeholder=""></input>
+                    <!-- ì´ ìžë¦¬ëŠ” ì‚¬ìš©ì—¬ë¶€ê°€ ë“¤ì–´ê°ˆ ìˆ˜ ìžˆëŠ” ìžë¦¬ìž…ë‹ˆë‹¤. -->                 
+                  	
                   <div class="modal_button" style="width:300px;">
-                    <button type="button" id="modal_close_btn">Ãë¼Ò</button>
-                    <button type="button" id="submit">µî·Ï</button>
+                    <button type="button" id="modal_close_btn">ì·¨ì†Œ</button>
+                    <button type="submit" id="submit">ë“±ë¡</button>
                   </div>
                 </div>
+                </form>
               </div><!--modal layer-->
               </div><!--modal-->
         </div>
