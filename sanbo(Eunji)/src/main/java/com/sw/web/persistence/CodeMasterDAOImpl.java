@@ -8,14 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.sw.web.domain.CodeMasterVO;
-import com.sw.web.domain.VulCheckVO;
 
 @Repository
 public class CodeMasterDAOImpl implements CodeMasterDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
+	;
 	private static final String namespace = "com.sw.web.mapper.codeMasterMapper";
 	
 

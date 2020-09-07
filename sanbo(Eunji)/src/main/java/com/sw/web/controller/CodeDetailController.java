@@ -21,45 +21,17 @@ import com.sw.web.service.CodeMasterService;
 import com.sw.web.service.CodeDetailService;
 
 @Controller
-@RequestMapping(value="code")
-public class CommonCodeController {
+@RequestMapping(value="detail")
+public class CodeDetailController {
 	
 	@Autowired
-	private CodeMasterService codeMasterService;
 	private CodeDetailService codeDetailService;
-	
-	/*
-	 * 대표코드 보여주기
-	 */
-	
-	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public String readCodeMasterGet(Model model) throws Exception {
-		List<CodeMasterVO> vo = codeMasterService.readList();
-		model.addAttribute("code",vo);
-		return "test/common_code";
-	}
-	
-	/*
-	 * 대표코드 삽입하기
-	 */
-	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String createCodeMasterGet() throws Exception {
-		return "test/common_code";
-	}
-	
-	@RequestMapping(value="/add",method=RequestMethod.POST)
-	public String createCodeMasterPost(@ModelAttribute("code") CodeMasterVO vo) throws Exception {
-		codeMasterService.add(vo);
-		return "redirect:/code/read";
-	}
-	
 	
 	/*
 	 * 상세코드 보여주기
 	 */
 	
-	@RequestMapping(value="detail/read", method=RequestMethod.GET)
+	@RequestMapping(value="/read", method=RequestMethod.GET)
 	public String readCodeDetailGet(Model model) throws Exception {
 		List<CodeDetailVO> vo = codeDetailService.readList();
 		model.addAttribute("code",vo);
@@ -70,23 +42,15 @@ public class CommonCodeController {
 	 * 상세코드 삽입하기
 	 */
 	
-	@RequestMapping(value="detail/add",method=RequestMethod.GET)
+	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String createCodeDetailGet() throws Exception {
 		return "test/common_code_detail";
 	}
 	
-	@RequestMapping(value="detail/add",method=RequestMethod.POST)
+	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createCodeDetailPost(@ModelAttribute("code") CodeDetailVO vo) throws Exception {
 		codeDetailService.add(vo);
-		return "redirect:/code/read";
+		return "redirect:/detail/read";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
