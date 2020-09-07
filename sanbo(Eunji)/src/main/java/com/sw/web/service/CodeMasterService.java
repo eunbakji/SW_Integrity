@@ -8,7 +8,8 @@ import com.sw.web.domain.CodeMasterVO;
 
 public interface CodeMasterService {
 	public CodeMasterVO read(int id) throws Exception;
+	public void update(CodeMasterVO vo) throws Exception;
+	public void add(CodeMasterVO vo) throws Exception;
 	public List<CodeMasterVO> readList() throws Exception;
-	public void add(CodeMasterVO codeMaster) throws Exception;
-	public void update(CodeMasterVO codeMaster) throws Exception;
+
 }
