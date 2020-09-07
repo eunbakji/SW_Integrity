@@ -34,8 +34,10 @@ public class CommonCodeController {
 	@RequestMapping(value="/add",method=RequestMethod.POST)
 	public String createCodePost(@ModelAttribute("code") CodeMasterVO vo) throws Exception {
 		codeMasterService.add(vo);
-		return "redirect:/test/commmon_code";
+		return "redirect:/code/read";
 	}
+	
+	
 	
 	
 	

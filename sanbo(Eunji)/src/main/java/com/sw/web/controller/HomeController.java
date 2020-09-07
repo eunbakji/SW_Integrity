@@ -36,4 +36,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	// 민지가 붙여넣으라고 했음
+	@RequestMapping(value = "/vulcheck", method = RequestMethod.GET)
+	   public String getVulcheck(Model model) throws Exception {
+	      return "vul_check";      
+	   }
+	
 }

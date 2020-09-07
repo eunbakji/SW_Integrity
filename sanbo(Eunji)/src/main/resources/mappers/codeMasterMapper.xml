@@ -9,7 +9,7 @@
 <mapper namespace = "com.sw.web.mapper.codeMasterMapper">
 
 	<insert id = "insert">
-		insert into common_code_master (reprec, reprec_n) values ( #{reprec}, # {reprec_n})
+		insert into common_code_master (reprec, reprec_n) values (#{reprec}, #{reprec_n})
 		
 	</insert>
 	
