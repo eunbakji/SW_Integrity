@@ -29,7 +29,7 @@ public class CodeDetailServiceImpl implements CodeDetailService {
 
 	
 	public void add(CodeDetailVO vo) throws Exception {
-		codeDetailDAO.update(vo);
+		codeDetailDAO.add(vo);
 	}
 
 	

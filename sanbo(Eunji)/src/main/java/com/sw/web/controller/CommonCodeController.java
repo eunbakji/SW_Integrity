@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.sw.web.domain.CodeMasterVO;
 import com.sw.web.domain.CodeDetailVO;
@@ -28,8 +32,10 @@ public class CommonCodeController {
 	private CodeMasterService codeMasterService;
 	private CodeDetailService codeDetailService;
 	
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
 	/*
-	 * ´ëÇ¥ÄÚµå º¸¿©ÁÖ±â
+	 * ëŒ€í‘œì½”ë“œ ë³´ì—¬ì£¼ê¸°
 	 */
 	
 	@RequestMapping(value="/read", method=RequestMethod.GET)
@@ -40,7 +46,7 @@ public class CommonCodeController {
 	}
 	
 	/*
-	 * ´ëÇ¥ÄÚµå »ğÀÔÇÏ±â
+	 * ëŒ€í‘œì½”ë“œ ì¶”ê°€í•˜ê¸°
 	 */
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
@@ -54,37 +60,39 @@ public class CommonCodeController {
 		return "redirect:/code/read";
 	}
 	
-	
 	/*
-	 * »ó¼¼ÄÚµå º¸¿©ÁÖ±â
+	 * ëŒ€í‘œì½”ë“œ ìˆ˜ì •í•˜ê¸° íŒì—…ì°½
 	 */
 	
-	@RequestMapping(value="detail/read", method=RequestMethod.GET)
-	public String readCodeDetailGet(Model model) throws Exception {
-		List<CodeDetailVO> vo = codeDetailService.readList();
-		model.addAttribute("code",vo);
-		return "test/common_code_detail";
+		
+	@RequestMapping(value = "/modify_master.do", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getListbyId(Model model, int id) throws Exception {      
+	      logger.info("readMasterName" + id);
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      
+	      CodeMasterVO vo =  codeMasterService.read(id);
+	      logger.info(vo.getId() + " "+ vo.getReprec() + " " + vo.getReprec_n());
+	    //map.put("pageMaker", pageMaker);
+	      map.put("vo", vo);
+	      return map; // ë„˜ê¹€
+	      
 	}
 	
 	/*
-	 * »ó¼¼ÄÚµå »ğÀÔÇÏ±â
+	 * ëŒ€í‘œì½”ë“œ ìˆ˜ì • ë°±ì—”ë“œ
 	 */
 	
-	@RequestMapping(value="detail/add",method=RequestMethod.GET)
-	public String createCodeDetailGet() throws Exception {
-		return "test/common_code_detail";
-	}
-	
-	@RequestMapping(value="detail/add",method=RequestMethod.POST)
-	public String createCodeDetailPost(@ModelAttribute("code") CodeDetailVO vo) throws Exception {
-		codeDetailService.add(vo);
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updateCodeMasterPost(@ModelAttribute("code") CodeMasterVO vo) throws Exception {
+		logger.info("updateCodeMasterPost");
+		logger.info(vo.getId() + " " + vo.getReprec() + " " + vo.getReprec_n());
+		codeMasterService.update(vo);
 		return "redirect:/code/read";
 	}
 	
 	
-	
-	
-	
+	   
 	
 	
 	

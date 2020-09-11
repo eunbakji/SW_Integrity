@@ -5,7 +5,7 @@ public class CodeDetailVO {
 	private String reprec;
 	private String detailc;
 	private String detailc_n;
-	private String use;
+	private String use_value;
 	public int getId() {
 		return id;
 	}
@@ -30,12 +30,13 @@ public class CodeDetailVO {
 	public void setDetailc_n(String detailc_n) {
 		this.detailc_n = detailc_n;
 	}
-	public String getUse() {
-		return use;
+	public String getUse_value() {
+		return use_value;
 	}
-	public void setUse(String use) {
-		this.use = use;
+	public void setUse_value(String use_value) {
+		this.use_value = use_value;
 	}
+	
 	
 	
 	

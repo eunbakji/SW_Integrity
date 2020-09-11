@@ -34,7 +34,13 @@ public class CodeMasterDAOImpl implements CodeMasterDAO {
 
 	
 	public CodeMasterVO read(int id) throws Exception {
-		CodeMasterVO vo = sqlSession.selectOne(namespace + ".selectById");
+		CodeMasterVO vo = sqlSession.selectOne(namespace + ".selectById", id);
+		return vo;
+		
+	}
+	
+	public CodeMasterVO read(String reprec) throws Exception {
+		CodeMasterVO vo = sqlSession.selectOne(namespace + ".selectByCodeName", reprec);
 		return vo;
 		
 	}

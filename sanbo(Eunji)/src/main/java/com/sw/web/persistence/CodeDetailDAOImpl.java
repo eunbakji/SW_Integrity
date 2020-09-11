@@ -20,8 +20,7 @@ public class CodeDetailDAOImpl implements CodeDetailDAO {
 	
 
 	public void add(CodeDetailVO vo) throws Exception {
-		sqlSession.insert(namespace + ".insert", vo);		
-
+		sqlSession.insert(namespace + ".insert", vo);
 	}
 
 
@@ -32,7 +31,7 @@ public class CodeDetailDAOImpl implements CodeDetailDAO {
 	}
 
 	public CodeDetailVO read(int id) throws Exception {
-		CodeDetailVO vo = sqlSession.selectOne(namespace + ".selectById");
+		CodeDetailVO vo = sqlSession.selectOne(namespace + ".selectById", id);
 		return vo;
 	}
 

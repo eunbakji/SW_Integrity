@@ -20,6 +20,9 @@
 	<select id = "selectById" resultType = "CodeMasterVO">
 		select * from common_code_master where id = #{id}
 	</select>
+	<select id = "selectByCodeName" resultType = "CodeMasterVO">
+		select * from common_code_master where reprec = #{reprec}
+	</select>
 	
 	<update id = "update">
 		update common_code_master set reprec=#{reprec}, reprec_n=#{reprec_n}
