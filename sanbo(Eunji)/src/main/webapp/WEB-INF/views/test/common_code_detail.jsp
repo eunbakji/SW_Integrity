@@ -93,7 +93,12 @@ function getMastername(page){
                공통코드 관리(상세코드 등록)
           </div>
           <div class="login">
-            Admin님
+          	<c:if test="${member != null }"><a href="<c:url value="../login"/>">로그아웃</a>
+          		<p>${member.user_id }</p>
+          	</c:if>
+          	<c:if test="${member == null }"><a href="<c:url value="/logout"/>">로그인</a></c:if>          
+           <!-- 이케 해야함? -->
+         
           </div>
         </div>
       </header>

@@ -25,7 +25,7 @@ import com.sw.web.service.CodeMasterService;
 import com.sw.web.service.CodeDetailService;
 
 @Controller
-@RequestMapping(value="code")
+@RequestMapping(value="code") //localhost:8080/web/code
 public class CommonCodeController {
 	
 	@Autowired

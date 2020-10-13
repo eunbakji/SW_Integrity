@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +24,70 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
+	
+	   
+	<script>
+	function fn_idChk() {
+		$.ajax({
+			url : "./idChk.do",
+			type : "post",
+			dataType : "json",
+			data : {"user_id" : $("#user_id").val()},
+			success : function(data) {
+				if (data == 1) {
+					alert("중복된 아이디 입니당");
 
+					}else if(data ==0) {
+					$("#idChk").attr("value", "Y");
+					
+					alert("사용 가능한 아이디 입다");
+					$('#user_id').attr("readonly",true);
+						} 
+				}
+			})
+	}
+
+
+	</script>
+   
+    <!--
+    <script>
+    $(document).ready(function(e) {
+        $('#idChk').click(function(){
+            $.ajax({
+				url : "./idChk.do",
+				type: "get",
+				data : {
+					"user_id":$('#user_id').val()
+				},
+				success : function(data) {
+					if(data == 0 && $.trim($('#user_id').val()) != '' ){
+						idx=true;
+						$('#user_id').attr("readonly",true);
+						var html="<tr><td colspan='3' style='color: green'>사용가능</td></tr>";
+						
+					} else {
+						var html="<tr><td colspan='3' style='color: red'>사용불가능한 아이디 입니다.</td></tr>";
+
+						}
+
+					},
+					error : function() {
+						alert("서버에러");
+						}	
+                });
+			//입력 값 체크
+            });
+        });
+
+    </script>
+    -->
+     
 <div id="mArticle">
 
 
 	<div class="content_signup">
-			<form method="post" action="joinAction.jsp">
+			<form method="post" action="<c:url value="/join"/>">
 			<fieldset class="fld_tistory" id="agreementFieldset" style="display:block;">
 				<legend class="screen_out">회원가입 동의 폼</legend>
 				<div class="wrap_signup"> <!-- 1번 wrap -->
@@ -243,7 +302,10 @@
 			<fieldset id = "infoFieldset" style="display:none;">
 				<legend class="screen_out">정보입력 폼</legend>
 				<p class="image_center">
-				<img src="../../../../icon/envm.png" width="72" height="72"  style="text-align:center; padding:10px"><br />		
+				
+				   
+				<img src="<c:url value="/resources/envm.png" />" width="72" height="72"  style="text-align:center; padding:10px"><br />	
+			
 				<strong class="tit_step">회원 정보 입력</strong>
 				</p>
 				
@@ -253,8 +315,11 @@
 							<label for="loginId">아이디</label>
 						</dt>
 						<dd>
-							<div class="inp_text inp_text_type3">
-								<input type="text" id="loginId" name="userID" class="inp_g" placeholder="아이디를 입력해주세요 (인증 시 필요)" value="">
+							<div class="inp_text inp_text_type3" style="float:left;">
+								<input type="text" id="user_id" name="user_id" class="inp_g" placeholder="아이디를 입력해주세요 (인증 시 필요)" value="">
+								
+								<button type = "button" id = "modal_close_btn" onclick="fn_idChk();" value = "N">중복확인</button>
+								
 							</div>
 						</dd>
 					</dl>
@@ -265,7 +330,7 @@
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="text" id="loginId" name="userEmail" class="inp_g" placeholder="이메일을 입력해주세요" value="">
+								<input type="text" id="loginId" name="email" class="inp_g" placeholder="이메일을 입력해주세요" value="">
 							</div>
 						</dd>
 					</dl>
@@ -276,7 +341,7 @@
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="password" id="pw" name="userPassword" class="inp_g" placeholder="영문, 숫자, 특수문자를 조합하여 10자 이상 적어주세요." value="">
+								<input type="password" id="pw" name="password" class="inp_g" placeholder="영문, 숫자, 특수문자를 조합하여 10자 이상 적어주세요." value="">
 							</div>
 						</dd>
 					</dl>
@@ -287,18 +352,19 @@
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="password" id="pw2" name="userPassword" class="inp_g" placeholder="비밀번호를 한번 더 입력해주세요">
+								<input type="password" id="pw2" name="password_confrim" class="inp_g" placeholder="비밀번호를 한번 더 입력해주세요">
 							</div>
 						</dd>
 					</dl>
 					
+					<!--  
 					<dl>
 						<dt>
 							<label for="name">이름</label>
 						</dt>
 						<dd>
 							<div class="inp_text inp_text_type3">
-								<input type="text" id="pw2" name="userName" class="inp_g" placeholder="이름을 입력해주세요">
+								<input type="text" id="pw2" name="name" class="inp_g" placeholder="이름을 입력해주세요">
 							</div>
 						</dd>
 					</dl>
@@ -324,7 +390,7 @@
 							</div>
 						</dd>
 					</dl>
-								
+					-->			
 				</div><!-- cont_data-->
 				<div id="recaptchaWidget" class="g-recaptcha recaptcha-wrap"></div>
 				<div class="wrap_btn">				

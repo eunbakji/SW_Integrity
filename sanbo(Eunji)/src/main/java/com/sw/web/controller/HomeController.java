@@ -36,10 +36,12 @@ public class HomeController {
 		return "home";
 	}
 	
-	// ¹ÎÁö°¡ ºÙ¿©³ÖÀ¸¶ó°í ÇßÀ½
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/vulcheck", method = RequestMethod.GET)
 	   public String getVulcheck(Model model) throws Exception {
 	      return "vul_check";      
 	   }
+	
+	
 	
 }
