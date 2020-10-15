@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sw.web.mapper.assetManageMapper">
+  
+   <insert id="insert"> 
+   		insert into asset_manage (asset_name,main_device,sub_device) values
+ 		( #{asset_name},#{main_device},#{sub_device})
+     </insert> 
+ 	 
+     <select id="selectById" resultType="AssetManageVO">
+ 		select * from asset_manage where asset_id = #{id}
+     </select>
+ 	
+ 	 <select id="selectByName" resultType="AssetManageVO">
+ 		select * from asset_manage where asset_name LIKE CONCAT('%',#{asset_name},'%') 
+     </select>
+     
+     <select id="selectAll" resultType="AssetManageVO">
+     <![CDATA[
+ 		select * from asset_manage
+      ]]> 
+     </select>
+     
+    <update id="updateIntegCount">
+	 	update asset_manage set integ_count=#{integ_count}
+		 where asset_id=#{asset_id}
+    </update>
+    
+    <update id="updateRiskCount">
+	 	update asset_manage set risk_count=#{risk_count}
+		 where asset_id=#{asset_id}
+    </update>
+    
+     <update id="updatePLC">
+	 	update asset_manage set hash_logic=#{hash_logic},hash_firm=#{hash_firm},hash_op=#{hash_op},hash_step=#{hash_step}
+		 where asset_id=#{asset_id}
+    </update>
+    
+    <update id="updateServer">
+	 	update asset_manage set hash_logic=#{hash_logic},hash_engine=#{hash_engine}
+		 where asset_id=#{asset_id}
+    </update>
+ 
+    <delete id="delete">
+		delete from asset_manage where asset_id = #{id}
+    </delete>
+ 		
+</mapper>  
