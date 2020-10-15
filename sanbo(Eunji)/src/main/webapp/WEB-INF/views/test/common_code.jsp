@@ -60,7 +60,12 @@ $("#checkBoxId").change(function() {
             	공통코드 관리
           </div>
           <div class="login">
-            Admin님
+           <c:if test="${user.user_id != null}">
+          	 ${user.user_id}
+          </c:if>
+            <c:if test="${user.user_id == null}">
+          	  모르는사람
+          </c:if>
           </div>
         </div>
       </header>

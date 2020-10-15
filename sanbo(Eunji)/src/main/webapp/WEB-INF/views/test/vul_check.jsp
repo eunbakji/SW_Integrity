@@ -23,7 +23,12 @@
             	취약점 점검 항목
           </div>
           <div class="login">
-            Admin님
+          <c:if test="${user.user_id != null}">
+          	 ${user.user_id}
+          </c:if>
+            <c:if test="${user.user_id == null}">
+          	  모르는사람
+          </c:if>
           </div>
         </div>
       </header>

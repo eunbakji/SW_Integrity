@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
+import com.sw.web.domain.UserVO;
 import com.sw.web.domain.VulCheckVO;
 import com.sw.web.service.VulCheckService;
 
 @Controller
-@RequestMapping(value="vul") //¿©±â¿¡ Å×ÀÌºí ÀÌ¸§ µé¾î°¨
+@RequestMapping(value="vul") //ï¿½ï¿½ï¿½â¿¡ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½î°¨
 public class VulCheckController {
 	
 	@Autowired
@@ -31,9 +32,11 @@ public class VulCheckController {
 	}
 	*/
 	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public String readVulGet(Model model) throws Exception {
+	public String readVulGet(Model model, HttpSession session) throws Exception {
+		UserVO user =  (UserVO)session.getAttribute("user");
 		List<VulCheckVO> vo = VulCheckService.readList();
 		model.addAttribute("vul",vo);
+		model.addAttribute("user", user);
 		return "test/vul_check";
 	}
 	

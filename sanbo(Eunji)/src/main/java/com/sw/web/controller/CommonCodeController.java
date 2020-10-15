@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.sw.web.domain.CodeMasterVO;
+import com.sw.web.domain.UserVO;
 import com.sw.web.domain.CodeDetailVO;
 import com.sw.web.service.CodeMasterService;
 import com.sw.web.service.CodeDetailService;
@@ -39,8 +40,10 @@ public class CommonCodeController {
 	 */
 	
 	@RequestMapping(value="/read", method=RequestMethod.GET)
-	public String readCodeMasterGet(Model model) throws Exception {
+	public String readCodeMasterGet(Model model, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("user");
 		List<CodeMasterVO> vo = codeMasterService.readList();
+		model.addAttribute("user", user);
 		model.addAttribute("code",vo);
 		return "test/common_code";
 	}
